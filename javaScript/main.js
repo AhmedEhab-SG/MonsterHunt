@@ -1,5 +1,8 @@
 /** @type {HTMLCanvasElement} */
-import { BatMonster } from "./class/BatMonster.js";
+import { BatMonster } from "./class/eneimes/BatMonster.js";
+import { BirdMonster } from "./class/eneimes/BirdMonster.js";
+import { GhostMonster } from "./class/eneimes/GhostMonster.js";
+import { SpinMonster } from "./class/eneimes/SpinMonster.js";
 
 import { animate } from "./lib/functions.js";
 
@@ -10,19 +13,13 @@ const CANVAS_WIDTH = (canvas.width = 500);
 const CANVAS_HEIGHT = (canvas.height = 1000);
 
 const numberOfEnemies = 20;
-const enemiesArr = [];
-
-const enemiesSrc = [
-  "../assets/img/enemies/enemy1.png",
-  "../assets/img/enemies/enemy2.png",
-  "../assets/img/enemies/enemy3.png",
-  "../assets/img/enemies/enemy4.png",
-];
-const enemyObj = new Image();
-enemyObj.src = enemiesSrc[0];
+const batsArr = [];
+const birdArr = [];
 
 for (let i = 0; i < numberOfEnemies; i++) {
-  enemiesArr.push(new BatMonster(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, enemyObj));
+  //batsArr.push(new BatMonster(ctx, CANVAS_WIDTH, CANVAS_HEIGHT));
+  batsArr.push(new SpinMonster(ctx, CANVAS_WIDTH, CANVAS_HEIGHT));
 }
 
-animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, enemiesArr);
+//animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, batsArr);
+animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, batsArr);

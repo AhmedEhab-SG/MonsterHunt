@@ -12,13 +12,15 @@ const animate = function (
 
   enemiesArr.forEach((enemy) => {
     const deltaTime = currentTime - enemy.frameTime;
+    //console.log(deltaTime);
     if (deltaTime >= enemy.frameDuration * enemy.flapSpeed) {
       enemy.frameTime = currentTime;
       enemy.update;
     }
     enemy.draw;
-    
   });
+
+  
 
   // will make aniamtion loop like set interval
   requestAnimationFrame((time) =>
