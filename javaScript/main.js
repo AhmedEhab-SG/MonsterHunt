@@ -17,7 +17,6 @@ const numberOfEnemies = 5;
 const typesOfEnemies = 4;
 
 const layerArr = [];
-
 const enemiesArr = [];
 
 for (let i = 0; i < typesOfEnemies; i++) {
@@ -28,8 +27,6 @@ for (let i = 0; i < typesOfEnemies; i++) {
     );
   }
 }
-
-console.table(enemiesArr);
 
 for (let i = 0; i < backgroundsSrc.length; i++) {
   layerArr.push(

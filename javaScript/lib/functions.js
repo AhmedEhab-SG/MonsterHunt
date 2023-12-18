@@ -12,9 +12,15 @@ const animate = function (
   ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
   layerArr.forEach((layer) => {
-    layer.update;
+    const deltaTime = currentTime - layer.frameTime;
+    if (deltaTime >= layer.frameDuration) {
+      layer.frameTime = currentTime;
+      layer.update;
+    }
+    
     layer.draw;
   });
+
   eneimesArr.forEach((enemyArr) => {
     enemyArr.forEach((enemy) => {
       const deltaTime = currentTime - enemy.frameTime;
