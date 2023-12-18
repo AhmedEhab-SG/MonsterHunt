@@ -1,5 +1,5 @@
 import { Enemy } from "./Enemy.js";
-import { enemiesSrc } from "../../../assets/scripts/enemies.js";
+import { enemiesSrc } from "../../../assets/script/assetsPath.js";
 
 class BatMonster extends Enemy {
   constructor(ctx, width, height) {

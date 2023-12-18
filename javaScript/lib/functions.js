@@ -4,27 +4,32 @@ const animate = function (
   ctx,
   CANVAS_WIDTH,
   CANVAS_HEIGHT,
-  enemiesArr,
+  layerArr,
+  eneimesArr,
   currentTime = performance.now()
 ) {
-  // this will clear old paint
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  enemiesArr.forEach((enemy) => {
-    const deltaTime = currentTime - enemy.frameTime;
-    //console.log(deltaTime);
-    if (deltaTime >= enemy.frameDuration * enemy.flapSpeed) {
-      enemy.frameTime = currentTime;
-      enemy.update;
-    }
-    enemy.draw;
+  layerArr.forEach((layer) => {
+    layer.update;
+    layer.draw;
+  });
+  eneimesArr.forEach((enemyArr) => {
+    enemyArr.forEach((enemy) => {
+      const deltaTime = currentTime - enemy.frameTime;
+      if (deltaTime >= enemy.frameDuration * enemy.flapSpeed) {
+        enemy.frameTime = currentTime;
+        enemy.update;
+      }
+      enemy.draw;
+    });
   });
 
-  
-
-  // will make aniamtion loop like set interval
+  // enemiesArr.update;
+  // enemiesArr.draw;
   requestAnimationFrame((time) =>
-    animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, enemiesArr, time)
+    animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, layerArr, eneimesArr, time)
   );
 };
 

@@ -1,5 +1,5 @@
 import { Enemy } from "./Enemy.js";
-import { enemiesSrc } from "../../../assets/scripts/enemies.js";
+import { enemiesSrc } from "../../../assets/script/assetsPath.js";
 
 class SpinMonster extends Enemy {
   constructor(ctx, canvasWidth, canvasHeight) {
@@ -8,7 +8,7 @@ class SpinMonster extends Enemy {
     this.flapSpeed = Math.floor(Math.random() * 3 + 1);
     this.newX = Math.random() * (this.canvasWidth - this.widthObj);
     this.newY = Math.random() * (this.canvasHeight - this.heightObj);
-    this.interval = Math.floor(Math.random() * 70 + 10);
+    this.interval = Math.floor(Math.random() * 50 + 10);
   }
 
   get update() {

@@ -1,25 +1,47 @@
 /** @type {HTMLCanvasElement} */
-import { BatMonster } from "./class/eneimes/BatMonster.js";
-import { BirdMonster } from "./class/eneimes/BirdMonster.js";
-import { GhostMonster } from "./class/eneimes/GhostMonster.js";
-import { SpinMonster } from "./class/eneimes/SpinMonster.js";
 
+import { Layer } from "./class/background/Layer.js";
+import { monsterClassArr } from "./class/scripts/classesMap.js";
 import { animate } from "./lib/functions.js";
+import { backgroundsSrc } from "../assets/script/assetsPath.js";
 
 const canvas = document.querySelector(".container");
 const ctx = canvas.getContext("2d");
 
-const CANVAS_WIDTH = (canvas.width = 500);
-const CANVAS_HEIGHT = (canvas.height = 1000);
+const CANVAS_WIDTH = (canvas.width = screen.width);
+const CANVAS_HEIGHT = (canvas.height = screen.height);
 
-const numberOfEnemies = 20;
-const batsArr = [];
-const birdArr = [];
+const gameSpeed = 5;
 
-for (let i = 0; i < numberOfEnemies; i++) {
-  //batsArr.push(new BatMonster(ctx, CANVAS_WIDTH, CANVAS_HEIGHT));
-  batsArr.push(new SpinMonster(ctx, CANVAS_WIDTH, CANVAS_HEIGHT));
+const numberOfEnemies = 5;
+const typesOfEnemies = 4;
+
+const layerArr = [];
+
+const enemiesArr = [];
+
+for (let i = 0; i < typesOfEnemies; i++) {
+  enemiesArr[i] = [];
+  for (let j = 0; j < numberOfEnemies; j++) {
+    enemiesArr[i].push(
+      new monsterClassArr[i](ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
+    );
+  }
 }
 
-//animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, batsArr);
-animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, batsArr);
+console.table(enemiesArr);
+
+for (let i = 0; i < backgroundsSrc.length; i++) {
+  layerArr.push(
+    new Layer(
+      ctx,
+      backgroundsSrc[i],
+      CANVAS_WIDTH,
+      CANVAS_HEIGHT,
+      0.13 * i,
+      gameSpeed
+    )
+  );
+}
+
+animate(ctx, CANVAS_WIDTH, CANVAS_HEIGHT, layerArr, enemiesArr);
